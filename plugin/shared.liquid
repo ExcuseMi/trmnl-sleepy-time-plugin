@@ -9,14 +9,13 @@ assign friday_time = trmnl.plugin_settings.custom_fields_values.friday_time
 assign saturday_time = trmnl.plugin_settings.custom_fields_values.saturday_time
 assign sunday_time = trmnl.plugin_settings.custom_fields_values.sunday_time
 assign sleepy_text = trmnl.plugin_settings.custom_fields_values.sleepy_text
-assign portrait_image = "https://raw.githubusercontent.com/ExcuseMi/trmnl-sleepy-time-plugin/refs/heads/main/images/3.png"
-assign landscape_image = "https://raw.githubusercontent.com/ExcuseMi/trmnl-sleepy-time-plugin/refs/heads/main/images/2.png"
-
-
-assign img_url = trmnl.plugin_settings.custom_fields_values.img_url | default: default_image
+assign portrait_image = "https://raw.githubusercontent.com/ExcuseMi/trmnl-sleepy-time-plugin/refs/heads/main/images/4.jpg"
+assign landscape_image = "https://raw.githubusercontent.com/ExcuseMi/trmnl-sleepy-time-plugin/refs/heads/main/images/5.jpg"
+assign title = "Sleepy time!"
+assign img_url = trmnl.plugin_settings.custom_fields_values.img_url | default: default_image
 
 assign activate_minutes_before = trmnl.plugin_settings.custom_fields_values.activate_minutes_before | default: 15 | plus: 0
-assign activate_minutes_after = trmnl.plugin_settings.custom_fields_values.activate_minutes_after | default: 15  | plus: 0
+assign activate_minutes_after = trmnl.plugin_settings.custom_fields_values.activate_minutes_after | default: 15 | plus: 0
 
 assign weekday = now | date: "%w"
 
@@ -36,30 +35,60 @@ case weekday
   when "6" 
     assign scheduled_time = saturday_time
 endcase
-if scheduled_time == blank
-   assign display_plugin = false
-else
 
+if scheduled_time == blank
+  assign display_plugin = false
+else
   assign today_date = now | date: "%Y-%m-%d"
-  assign target_timestamp = today_date | append: " " | append: scheduled_time | date: "%s"
   
-  # Convert minute offsets to seconds
+  assign time_parts = scheduled_time | split: ':'
+  assign hour = time_parts[0] | plus: 0
+  assign minute = time_parts[1] | plus: 0
+  
+  assign minute_display = minute
+  if minute < 10
+    assign minute_display = '0' | append: minute
+  endif
+  
+  assign target_date_string = today_date | append: 'T' | append: scheduled_time | append: ':00'
+  
+  assign target_timestamp = target_date_string | date: '%s'
+  
+  if trmnl.plugin_settings.custom_fields_values.time_format == "12"
+    if hour == 0
+      assign display_hour = 12
+      assign am_pm = "AM"
+    elsif hour < 12
+      assign display_hour = hour
+      assign am_pm = "AM"
+    elsif hour == 12
+      assign display_hour = 12
+      assign am_pm = "PM"
+    else
+      assign display_hour = hour | minus: 12
+      assign am_pm = "PM"
+    endif
+    assign formatted_time = display_hour | append: ':' | append: minute_display | append: ' ' | append: am_pm
+  else
+    assign hour_display = hour
+    if hour < 10
+      assign hour_display = '0' | append: hour
+    endif
+    assign formatted_time = hour_display | append: ':' | append: minute_display
+  endif
+
   assign before_seconds = activate_minutes_before | times: 60
   assign after_seconds  = activate_minutes_after  | times: 60
-  
-  # Correct window calculation (all values in seconds)
+
   assign window_start = target_timestamp | minus: before_seconds
-  assign window_end   = target_timestamp | plus:  after_seconds
-  
+  assign window_end   = target_timestamp | plus: after_seconds
+
   assign display_plugin = false
   if now >= window_start and now <= window_end
     assign display_plugin = true
   endif
 endif
-
 %}
-{% if display_plugin %}
-<script>window.TRMNL_SKIP_DISPLAY = false;</script>
-{% else %}
+{% unless display_plugin %}
 <script>window.TRMNL_SKIP_DISPLAY = true;</script>
-{% endif %}
+{% endunless %}
