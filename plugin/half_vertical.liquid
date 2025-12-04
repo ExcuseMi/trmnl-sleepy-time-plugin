@@ -1,0 +1,16 @@
+<div class="layout layout-stretch">
+  <div class="flex flex--col">
+        {% if sleepy_text != "" %}{% assign image = portrait_image %}{%else%}{% assign image = landscape_image %}{%endif%}
+
+  <img class="image iamge-dither w--full rounded" {% if sleepy_text != "" %}style="height: 50%;"{% endif %}
+    src="{{image}}" />
+  {% if sleepy_text != "" %}
+  <div class="description">{{sleepy_text | markdown_to_html }}</div>
+  {% endif %}
+  </div>
+</div>
+<div class="title_bar">
+  <span class="title text--stroke">Sleepy time!</span>
+    <span class="instance text--stroke">{{scheduled_time}}</span>
+
+</div>

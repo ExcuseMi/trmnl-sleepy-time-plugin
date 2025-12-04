@@ -1,0 +1,65 @@
+{% liquid
+assign now = trmnl.system.timestamp_utc | plus: trmnl.user.utc_offset
+
+assign monday_time = trmnl.plugin_settings.custom_fields_values.monday_time
+assign tuesday_time = trmnl.plugin_settings.custom_fields_values.tuesday_time
+assign wednesday_time = trmnl.plugin_settings.custom_fields_values.wednesday_time
+assign thursday_time = trmnl.plugin_settings.custom_fields_values.thursday_time
+assign friday_time = trmnl.plugin_settings.custom_fields_values.friday_time
+assign saturday_time = trmnl.plugin_settings.custom_fields_values.saturday_time
+assign sunday_time = trmnl.plugin_settings.custom_fields_values.sunday_time
+assign sleepy_text = trmnl.plugin_settings.custom_fields_values.sleepy_text
+assign portrait_image = "https://raw.githubusercontent.com/ExcuseMi/trmnl-sleepy-time-plugin/refs/heads/main/images/3.png"
+assign landscape_image = "https://raw.githubusercontent.com/ExcuseMi/trmnl-sleepy-time-plugin/refs/heads/main/images/2.png"
+
+
+assign img_url = trmnl.plugin_settings.custom_fields_values.img_url | default: default_image
+
+assign activate_minutes_before = trmnl.plugin_settings.custom_fields_values.activate_minutes_before | default: 15 | plus: 0
+assign activate_minutes_after = trmnl.plugin_settings.custom_fields_values.activate_minutes_after | default: 15  | plus: 0
+
+assign weekday = now | date: "%w"
+
+case weekday
+  when "0" 
+    assign scheduled_time = sunday_time
+  when "1" 
+    assign scheduled_time = monday_time
+  when "2" 
+    assign scheduled_time = tuesday_time
+  when "3" 
+    assign scheduled_time = wednesday_time
+  when "4" 
+    assign scheduled_time = thursday_time
+  when "5" 
+    assign scheduled_time = friday_time
+  when "6" 
+    assign scheduled_time = saturday_time
+endcase
+if scheduled_time == blank
+   assign display_plugin = false
+else
+
+  assign today_date = now | date: "%Y-%m-%d"
+  assign target_timestamp = today_date | append: " " | append: scheduled_time | date: "%s"
+  
+  # Convert minute offsets to seconds
+  assign before_seconds = activate_minutes_before | times: 60
+  assign after_seconds  = activate_minutes_after  | times: 60
+  
+  # Correct window calculation (all values in seconds)
+  assign window_start = target_timestamp | minus: before_seconds
+  assign window_end   = target_timestamp | plus:  after_seconds
+  
+  assign display_plugin = false
+  if now >= window_start and now <= window_end
+    assign display_plugin = true
+  endif
+endif
+
+%}
+{% if display_plugin %}
+<script>window.TRMNL_SKIP_DISPLAY = false;</script>
+{% else %}
+<script>window.TRMNL_SKIP_DISPLAY = true;</script>
+{% endif %}

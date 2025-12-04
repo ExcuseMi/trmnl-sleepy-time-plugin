@@ -1,0 +1,68 @@
+---
+strategy: polling
+no_screen_padding: 'no'
+dark_mode: 'no'
+static_data: ''
+polling_verb: get
+polling_url: https://usetrmnl.com/custom_plugin_example_data.json
+polling_headers: ''
+polling_body: ''
+id: 190819
+custom_fields:
+- keyname: doesnt_matter
+  name: About This Plugin
+  category: life
+  field_type: author_bio
+  description: "Let your loved ones know it's time to head to bed with a warm image and your personal sleepy ritual \U0001F49E\U0001F319.<br /><br />This plugin only appears during the bedtime window you set for each day, keeping everything gentle and intentional ✨.<br /><br />To make sure it never gets buried in your playlist, mark it as <strong>important</strong>:<br />Go to your playlist settings, add a schedule for this plugin, and flag it as important so it always pops up when it should \U0001F49B"
+  github_url: https://github.com/ExcuseMi/trmnl-sleepy-time-plugin
+- keyname: sleepy_text
+  name: "Sleepy Text \U0001F319"
+  field_type: text
+  optional: true
+  description: Write a cozy bedtime message! ✨
+  help_text: Supports <a href='https://onlinemarkdown.com/cheat-sheet'>markdown</a>
+  placeholder: "# It's Time to Sleep\n## \U0001F4F1 Turn Off Screens Say goodnight to your tablet and TV — let your eyes rest and your mind slow down.\n## \U0001FAA5 Brush Your Teeth A fresh smile before bed makes drifting off feel extra clean and comfy.\n## \U0001F6CF️ Crawl Into Bed Snuggle under the covers, get cozy, and let your body melt into rest. Take a deep breath… you're safe, warm, and ready for dreamland. ✨"
+- keyname: activate_minutes_before
+  name: Active Minutes Before ⏰✨
+  field_type: number
+  min: 0
+  max: 360
+  default: '15'
+  description: "How many minutes before bedtime the sleepy vibes start \U0001F497"
+- keyname: activate_minutes_after
+  name: "Active Minutes After \U0001F634➡️"
+  field_type: number
+  min: 0
+  max: 360
+  default: '15'
+  description: "How long the plugin stays sleepy after your bedtime \U0001F31C"
+- keyname: monday_time
+  field_type: time
+  name: "Monday Time \U0001F324️"
+  description: A fresh start bedtime for your Monday ✨
+- keyname: tuesday_time
+  field_type: time
+  name: "Tuesday Time \U0001F49B"
+  description: A gentle bedtime for a cozy Tuesday night ✨
+- keyname: wednesday_time
+  field_type: time
+  name: "Wednesday Time \U0001F9F8"
+  description: "Midweek bedtime softness \U0001F495"
+- keyname: thursday_time
+  field_type: time
+  name: "Thursday Time \U0001F319"
+  description: A calm wind-down to ease into the weekend ✨
+- keyname: friday_time
+  field_type: time
+  name: "Friday Time ✨\U0001F389"
+  description: "Weekend bedtime energy — chill or fun! \U0001F4AB"
+- keyname: saturday_time
+  field_type: time
+  name: "Saturday Time \U0001F308"
+  description: "Your most flexible, comfy bedtime of the week \U0001F496"
+- keyname: sunday_time
+  field_type: time
+  name: "Sunday Time \U0001F31C"
+  description: "A soft, soothing bedtime to prepare for Monday \U0001F49E"
+name: Sleepy Time!
+refresh_interval: 5

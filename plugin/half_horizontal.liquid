@@ -1,0 +1,17 @@
+<div class="layout layout-stretch">
+  <div class="columns stretch">
+    <div class="column">
+      <img class="image iamge-dither image--contain h--full w--auto rounded" 
+        src="{{landscape_image}}" />
+    </div>
+  {% if sleepy_text != "" %}
+  <div class="column stretch text--center">
+    <div class="description">{{sleepy_text | markdown_to_html }}</div>
+  </div>
+  {% endif %}
+  </div>
+</div>
+<div class="title_bar">
+  <span class="title text--stroke">Sleepy time!</span>
+    <span class="instance text--stroke">{{scheduled_time}}</span>
+</div>
