@@ -1,7 +1,6 @@
 <div class="layout layout-stretch layout--center">
   <div class="flex flex--row stretch">
-        {% if sleepy_text != "" %}{% assign image = portrait_image %}{%else%}{% assign image = landscape_image %}{%endif%}
-
+    {% if sleepy_text != "" %}{% assign image = portrait_image %}{%else%}{% assign image = landscape_image %}{%endif%}
     <img class="image image-dither h--full w--full rounded" 
       src="{{image}}" />
     {% if sleepy_text != "" %}
@@ -9,7 +8,8 @@
     {% endif %}
   </div>
 </div>
+{% if title != "" %}
 <div class="title_bar">
   <span class="title text--stroke">{{title}}</span>
-  <span class="instance text--stroke">{{formatted_time}}</span>
 </div>
+{% endif %}

@@ -13,7 +13,7 @@ custom_fields:
   name: About This Plugin
   category: life
   field_type: author_bio
-  description: Let your loved ones know it's time to head to bed with a warm image and your personal sleepy ritual.<br /><br />This plugin only appears during the bedtime window you set for each day, keeping everything gentle and intentional.<br /><br />To make sure it never gets buried in your playlist, mark it as <strong>important</strong>:<br />Go to your playlist settings, add a schedule for this plugin, and flag it as important so it always pops up when it should.
+  description: Let your loved ones know it's time to head to bed with a warm image and your personal sleepy ritual.<br /><br />Set the schedule for this plugin in your <a href='https://usetrmnl.com/playlists'>playlist</a> to match your kids bedtime.<br /><br />When setting the schedule, please take into account the refresh rate of your device's dashboard to ensure proper timing.<br /><br />To make sure it never gets buried in your playlist, mark it as <strong>important</strong>.<br />
   github_url: https://github.com/ExcuseMi/trmnl-sleepy-time-plugin
 - keyname: sleepy_text
   name: Sleepy Text
@@ -33,62 +33,11 @@ custom_fields:
     ## Crawl Into Bed
     Snuggle under the covers, get cozy, and let your body melt into rest.
     Take a deep breath… you're safe, warm, and ready for dreamland.
-- keyname: activate_minutes_before
-  name: Active Minutes Before
-  field_type: number
-  min: 0
-  max: 360
-  default: '15'
-  description: How many minutes before bedtime the sleepy vibes start.
-- keyname: activate_minutes_after
-  name: Active Minutes After
-  field_type: number
-  min: 0
-  max: 360
-  default: '15'
-  description: How long the plugin stays sleepy after your bedtime.
-- keyname: monday_time
-  field_type: time
-  name: Monday Time
-  description: A fresh start bedtime for your Monday.
-  optional: true
-- keyname: tuesday_time
-  field_type: time
-  name: Tuesday Time
-  description: A gentle bedtime for a cozy Tuesday night.
-  optional: true
-- keyname: wednesday_time
-  field_type: time
-  name: Wednesday Time
-  description: Midweek bedtime softness.
-  optional: true
-- keyname: thursday_time
-  field_type: time
-  name: Thursday Time
-  description: A calm wind-down to ease into the weekend.
-  optional: true
-- keyname: friday_time
-  field_type: time
-  name: Friday Time
-  description: Weekend bedtime energy — chill or fun!
-  optional: true
-- keyname: saturday_time
-  field_type: time
-  name: Saturday Time
-  description: Your most flexible, comfy bedtime of the week.
-  optional: true
-- keyname: sunday_time
-  field_type: time
-  name: Sunday Time
-  description: A soft, soothing bedtime to prepare for Monday.
-  optional: true
-- keyname: time_format
-  name: Time Format
-  field_type: select
-  description: Choose how your bedtime is displayed.
-  options:
-  - 12-hour (AM/PM): '12'
-  - 24-hour: '24'
-  default: '24'
+- keyname: title
+  name: Title Text
+  description: Change the title text to whatever you like
+  field_type: string
+  placeholder: Sleepy Time!
+  default: Sleepy Time!
 name: Sleepy Time!
 refresh_interval: 5
