@@ -2,7 +2,7 @@
 <!-- PLUGIN_STATS_START -->
 ## 🚀 TRMNL Plugin(s)
 
-*Last updated: 2025-12-05 06:39:50 UTC*
+*Last updated: 2025-12-06 06:35:44 UTC*
 
 
 ## <img src="assets/plugin-images/190819_icon.png" alt="Sleepy Time! icon" width="32"/> [Sleepy Time!](https://usetrmnl.com/recipes/190819)
@@ -17,7 +17,7 @@ Let your loved ones know it's time to head to bed with a warm image and your per
 | Metric | Value |
 |--------|-------|
 | Installs | 0 |
-| Forks | 1 |
+| Forks | 3 |
 
 ---
 
