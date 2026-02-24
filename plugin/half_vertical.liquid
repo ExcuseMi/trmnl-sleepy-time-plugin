@@ -1,11 +1,12 @@
 <div class="layout layout-stretch">
   <div class="flex flex--col">
-        {% if sleepy_text != "" %}{% assign image = landscape_image %}{%else%}{% assign image = portrait_image %}{%endif%}
+  {% if sleepy_text != "" %}{% assign image = landscape_image %}{%else%}{% assign image = portrait_image %}{%endif%}
 
   <img class="image image-dither image--contain w--full rounded"
     src="{{image}}" />
   {% if sleepy_text != "" %}
-  <div class="description">{{sleepy_text | markdown_to_html }}</div>
+    <div data-content-limiter="true" class="content md:content--xsmall lg:content-small gap--small content--left stretch">
+      {{sleepy_text | markdown_to_html }}</div>
   {% endif %}
   </div>
 </div>

@@ -1,5 +1,5 @@
 ---
-strategy: polling
+strategy: static
 no_screen_padding: 'no'
 dark_mode: 'no'
 static_data: ''
@@ -12,6 +12,7 @@ custom_fields:
 - keyname: doesnt_matter
   name: About This Plugin
   category: life
+  help_text: TRMNL X Ready
   field_type: author_bio
   description: Let your loved ones know it's time to head to bed with a warm image and your personal sleepy ritual.<br /><br />Set the schedule for this plugin in your <a href='https://usetrmnl.com/playlists'>playlist</a> to match your kids bedtime.<br /><br />When setting the schedule, please take into account the refresh rate of your device's dashboard to ensure proper timing.<br /><br />To make sure it never gets buried in your playlist, mark it as <strong>important</strong>.<br />
   github_url: https://github.com/ExcuseMi/trmnl-sleepy-time-plugin
@@ -40,4 +41,4 @@ custom_fields:
   placeholder: Sleepy Time!
   default: Sleepy Time!
 name: Sleepy Time!
-refresh_interval: 5
+refresh_interval: 1440

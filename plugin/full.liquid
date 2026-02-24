@@ -1,10 +1,10 @@
 <div class="layout layout-stretch layout--center">
-  <div class="flex flex--row stretch">
+  <div class="flex flex--row portrait:flex--col stretch">
     {% if sleepy_text != "" %}{% assign image = portrait_image %}{%else%}{% assign image = landscape_image %}{%endif%}
-    <img class="image image-dither h--full w--full rounded" 
+    <img class="image image-dither w--[50cqh] portrait:h--[50cqh] image--contain rounded" 
       src="{{image}}" />
     {% if sleepy_text != "" %}
-    <div class="description">{{sleepy_text | markdown_to_html }}</div>
+    <div data-content-limiter="true" class="content content--left lg:content--large w--[50cqh] portrait:h--[50cqh]">{{sleepy_text | markdown_to_html }}</div>
     {% endif %}
   </div>
 </div>

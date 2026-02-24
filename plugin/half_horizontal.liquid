@@ -1,13 +1,10 @@
 <div class="layout layout-stretch">
-  <div class="columns stretch">
-    <div class="column">
-      <img class="image image-dither image--contain h--full w--auto rounded" 
-        src="{{landscape_image}}" />
-    </div>
+  <div class="flex flex--row portrait:flex--row stretch">
+      <img class="image image-dither image--contain w--[30cqw] rounded" 
+        src="{{portrait_image}}" />
   {% if sleepy_text != "" %}
-  <div class="column stretch text--center">
-    <div class="description">{{sleepy_text | markdown_to_html }}</div>
-  </div>
+    <div data-content-limiter="true" class="content md:content--xsmall lg:content-small gap--small content--left stretch">
+      {{sleepy_text | markdown_to_html }}</div>
   {% endif %}
   </div>
 </div>
