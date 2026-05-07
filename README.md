@@ -2,12 +2,12 @@
 <!-- PLUGIN_STATS_START -->
 ## 🚀 TRMNL Plugin(s)
 
-*Last updated: 2026-05-06 08:34:38 UTC*
+*Last updated: 2026-05-07 08:41:55 UTC*
 
 
 ## <img src="assets/plugin-images/190819_icon.png" alt="Sleepy Time! icon" width="32"/> [Sleepy Time!](https://usetrmnl.com/recipes/190819)
 
-![Sleepy Time! screenshot](assets/plugin-images/190819_screenshot.bmp)
+![Sleepy Time! screenshot](assets/plugin-images/190819_screenshot.png)
 
 ### Description
 Let your loved ones know it's time to head to bed with a warm image and your personal sleepy ritual.<br /><br />Set the schedule for this plugin in your <a href='https://usetrmnl.com/playlists'>playlist</a> to match your kids bedtime.<br /><br />When setting the schedule, please take into account the refresh rate of your device's dashboard to ensure proper timing.<br /><br />To make sure it never gets buried in your playlist, mark it as <strong>important</strong>.<br />
@@ -16,7 +16,7 @@ Let your loved ones know it's time to head to bed with a warm image and your per
 
 | Metric | Value |
 |--------|-------|
-| Installs | 1 |
+| Installs | 2 |
 | Forks | 17 |
 
 ---
